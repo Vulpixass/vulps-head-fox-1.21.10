@@ -18,5 +18,6 @@ public class VulpsHeadFoxClient implements ClientModInitializer {
                 registrationHelper.register(new FoxHatFeatureRenderer(playerRenderer));
             }
         });
+        System.out.println("Fox: I have to add this print line so I can upload the 1.21.10 version of the mod to modrinth");
     }
 }
