@@ -29,11 +29,12 @@ public class VulpsHeadFoxClient implements ClientModInitializer {
             if(timer >= 12000){
                 int sound = (int) (Math.random() * 2);
                 switch (sound) {
-                    case 0: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_SLEEP, 1.0f));
-                    case 1: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_AMBIENT, 1.0f));
-                    case 2: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_SNIFF, 1.0f));
-                    case 3: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_AMBIENT, 1.0f));
+                    case 0: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_SLEEP, 1.0f)); break;
+                    case 1: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_AMBIENT, 1.0f)); break;
+                    case 2: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_SNIFF, 1.0f)); break;
+                    case 3: MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX_AMBIENT, 1.0f)); break;
                 }
+                FoxHatFeatureRenderer.randomSoundTimer = 0;
             }
         });
         System.out.println("Fox: I have to add this print line so I can upload the 1.21.10 version of the mod to modrinth");
