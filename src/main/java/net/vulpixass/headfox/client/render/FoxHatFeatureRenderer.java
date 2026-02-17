@@ -47,7 +47,7 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
         this.getContextModel().head.applyTransform(matrices);
         matrices.translate(0.0F, -1.1F, 0.0F);
         matrices.scale(0.5F, 0.5F, 0.5F);
-        long time = client.world.getTime();
+        long time = me.age;
         if (time >= nextTwitchTime) {
             twitchAmount = 0.3F;
             nextTwitchTime = (time + 20 + client.world.random.nextInt(10))*20;
