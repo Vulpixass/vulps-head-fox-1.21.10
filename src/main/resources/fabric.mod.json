@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "headfox",
+	"version": "${version}",
+	"name": "Vulp's Head Fox",
+	"description": "A small Mod to add a Fox onto your Head",
+	"authors": [
+		"Vulpixass"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/vulps-head-fox",
+		"sources": "https://github.com/Vulpixass/vulps-head-fox-1.21.10"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/headfox/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.vulpixass.headfox.VulpsHeadFox"
+		],
+		"fabric-datagen": [
+			"net.vulpixass.headfox.VulpsHeadFoxDataGenerator"
+		],
+		"client": [
+			"net.vulpixass.headfox.VulpsHeadFoxClient"
+		]
+	},
+	"mixins": [
+		"headfox.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
