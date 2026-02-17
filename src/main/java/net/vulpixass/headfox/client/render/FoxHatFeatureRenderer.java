@@ -7,10 +7,12 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
+import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.vulpixass.headfox.client.model.fox_baby;
 
@@ -18,6 +20,7 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
     private long nextTwitchTime = 0;
     private float twitchAmount = 0;
     private final fox_baby foxModel;
+    public static int randomSoundTimer = 0;
     private FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context;
 
     private static final Identifier FOX_TEXTURE =
@@ -70,6 +73,7 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
 
         //Render Fox
         fox.head.resetTransform();
+        // client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX, 1.0f));
         FeatureRenderer.render(foxModel, FOX_TEXTURE, matrices, queue, light, state, 0xFFFFFF, 0);
         matrices.pop();
     }
