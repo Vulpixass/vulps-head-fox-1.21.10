@@ -2,6 +2,9 @@ package net.vulpixass.headfox.client.render;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
@@ -74,11 +77,10 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
         float sway = (float)Math.sin(time * (2 * Math.PI / 200.0)) * 0.10F;
         sway = Math.max(-0.15F, Math.min(0.15F, sway));
         foxModel.head.roll = sway;
-
         //Render Fox
         fox.head.resetTransform();
-        // client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FOX, 1.0f));
-        FeatureRenderer.render(foxModel, FOX_TEXTURE, matrices, queue, light, state, 0xFFFFFF, 0);
+        int finalLight = (light == 0) ? 15728880 : light;
+        queue.submitModel(foxModel, state, matrices, RenderLayer.getEntityCutout(FOX_TEXTURE), finalLight, OverlayTexture.DEFAULT_UV, 0, null);
         matrices.pop();
     }
 }
