@@ -1,9 +1,11 @@
 package net.vulpixass.headfox;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -13,10 +15,14 @@ import net.minecraft.entity.EntityType;
 import net.vulpixass.headfox.client.HeadFoxModelLayers;
 import net.vulpixass.headfox.client.model.fox_baby;
 import net.vulpixass.headfox.client.render.FoxHatFeatureRenderer;
+import net.vulpixass.headfox.command.client.ClientCommands;
 
 public class VulpsHeadFoxClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        ClientCommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess) -> {
+            ClientCommands.register(commandDispatcher);
+        });
         EntityModelLayerRegistry.registerModelLayer(HeadFoxModelLayers.FOX_LAYER, fox_baby::getTexturedModelData );
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, renderer, registrationHelper, ctx) -> {
             if (entityType == EntityType.PLAYER && renderer instanceof PlayerEntityRenderer playerRenderer) {

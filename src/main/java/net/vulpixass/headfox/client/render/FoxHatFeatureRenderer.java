@@ -7,24 +7,25 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.vulpixass.headfox.client.model.fox_baby;
+import net.vulpixass.headfox.command.client.FoxTypesEnum;
+
+import static net.vulpixass.headfox.command.client.ClientCommands.FoxType;
 
 public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderState, PlayerEntityModel> {
     private long nextTwitchTime = 0;
     private float twitchAmount = 0;
     private final fox_baby foxModel;
     public static int randomSoundTimer = 0;
+
     private FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context;
 
-    private static final Identifier FOX_TEXTURE =
-            Identifier.of("headfox", "textures/entity/fox_baby.png");
+    private static Identifier FOX_TEXTURE = Identifier.of("headfox", "textures/entity/regular_fox_baby.png");
 
     public FoxHatFeatureRenderer(FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context) {
         super(context);
@@ -41,7 +42,10 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
         PlayerEntity me = client.player;
         fox_baby fox = this.foxModel;
         PlayerEntity target = (PlayerEntity) client.world.getEntityById(state.id);
-
+        switch (FoxType) {
+            case FoxTypesEnum.REGULAR: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/regular_fox_baby.png"); break;
+            case FoxTypesEnum.SNOW: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/snow_fox_baby.png"); break;
+        }
         if (me == null) return;
         if (target == null || !target.getUuid().equals(me.getUuid())) {return;}
         ItemStack helmet = me.getEquippedStack(EquipmentSlot.HEAD);
