@@ -48,6 +48,11 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
         switch (FoxType) {
             case FoxTypesEnum.REGULAR: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/regular_fox_baby.png"); break;
             case FoxTypesEnum.SNOW: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/snow_fox_baby.png"); break;
+            case FoxTypesEnum.GHOST: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/ghost_fox_baby.png"); break;
+            case FoxTypesEnum.SANTA: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/santa_fox_baby.png"); break;
+            case FoxTypesEnum.ROBOT: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/robot_fox_baby.png"); break;
+            case FoxTypesEnum.GINGERBREAD: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/gingerbread_fox_baby.png"); break;
+            case FoxTypesEnum.RAINBOW: FOX_TEXTURE = Identifier.of("headfox", "textures/entity/rainbow_fox_baby.png"); break;
         }
         if (me == null) return;
         if (target == null || !target.getUuid().equals(me.getUuid())) {return;}
@@ -80,7 +85,7 @@ public class FoxHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderSta
         //Render Fox
         fox.head.resetTransform();
         int finalLight = (light == 0) ? 15728880 : light;
-        queue.submitModel(foxModel, state, matrices, RenderLayer.getEntityCutout(FOX_TEXTURE), finalLight, OverlayTexture.DEFAULT_UV, 0, null);
+        queue.submitModel(foxModel, state, matrices, RenderLayer.getEntityTranslucent(FOX_TEXTURE), finalLight, OverlayTexture.DEFAULT_UV, 0, null);
         matrices.pop();
     }
 }

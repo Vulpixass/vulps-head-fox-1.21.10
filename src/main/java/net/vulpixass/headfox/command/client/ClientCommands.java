@@ -14,6 +14,11 @@ public class ClientCommands {
                         .suggests(((context, builder) -> {
                             builder.suggest("regular");
                             builder.suggest("snow");
+                            builder.suggest("ghost");
+                            builder.suggest("santa");
+                            builder.suggest("robot");
+                            builder.suggest("gingerbread");
+                            builder.suggest("rainbow");
                             return builder.buildFuture();
                         }))
                         .executes(ctx -> {
@@ -21,6 +26,11 @@ public class ClientCommands {
                                 switch (type) {
                                     case "regular": FoxType = FoxTypesEnum.REGULAR; return 1;
                                     case "snow": FoxType = FoxTypesEnum.SNOW; return 1;
+                                    case "ghost": FoxType = FoxTypesEnum.GHOST; return 1;
+                                    case "santa": FoxType = FoxTypesEnum.SANTA; return 1;
+                                    case "robot": FoxType = FoxTypesEnum.ROBOT; return 1;
+                                    case "gingerbread": FoxType = FoxTypesEnum.GINGERBREAD; return 1;
+                                    case "rainbow": FoxType = FoxTypesEnum.RAINBOW; return 1;
                                 }
                                 return 0;
                         })));
